@@ -1,0 +1,47 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Estoque</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; }
+        th { background-color: #f4f4f4; }
+    </style>
+</head>
+<body>
+    <h1>Produtos e Fornecedores</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Nome do Produto</th>
+                <th>Preço</th>
+                <th>Fornecedor</th>
+            </tr>
+        </thead>
+        <tbody id="produto-lista"></tbody>
+    </table>
+
+    <script>
+        fetch('http://localhost:3000/produtos/com-fornecedor')
+            .then(response => response.json())
+            .then(data => {
+                const tabela = document.getElementById('produto-lista');
+                data.forEach(produto => {
+                    const row = document.createElement('tr');
+                    row.innerHTML = `
+                        <td>${produto.id}</td>
+                        <td>${produto.nome}</td>
+                        <td>${produto.preco}</td>
+                        <td>${produto.fornecedor ? produto.fornecedor.nome : 'Não associada'}</td>
+                    `;
+                    tabela.appendChild(row);
+                });
+            });
+    </script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+Testes POSTMAN
+ Cadastro de Fornecedor 
+
+{
+  "nome": "Fornecedor A",
+  "contato": "contato@fornecedora.com"
+}
+
+Cadastro de Produtos
+
+{
+  "nome": "Produto X",
+  "preco": 100,
+  "fornecedorId": 1
+}
+
+Lista de Produtos com Fornecedores
+
+{
+  "nome": "Produto Y",
+  "preco": 100,
+  "fornecedorId": 999 // Supondo que este ID não existe
+}
